@@ -1,4 +1,5 @@
 ._*
+*.swp*
 .nrepl-history
 pom.xml
 pom.xml.asc
