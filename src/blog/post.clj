@@ -1,15 +1,8 @@
 (ns blog.post
-  (:use [hiccup.core :only (html)]
-        [hiccup.page :only (html5 include-css)]))
+  (:require [hiccup.page :refer [html5 include-css]]
+            [blog.layout :refer [with-navbar]]))
 
-(defn render [{global-meta :meta posts :entries post :entry}]
-  (html5 {:lang "en" :itemtype "http://schema.org/Blog"}
-    [:head
-      [:title (str (:site-title global-meta) "|" (:title post))]
-      [:meta {:charset "utf-8"}]
-      [:meta {:http-equiv "X-UA-Compatible" :content "IE=edge,chrome=1"}]
-      [:meta {:name "viewport" :content "width=device-width, initial-scale=1.0, user-scalable=no"}]     ]
-      (include-css "css/tomlynch.css")
-    [:body
-        [:h1 (:title post)]
-        [:div (:content post)]]))
+(defn render [{global-meta :meta posts :entries post :entry :as opts}]
+  (with-navbar opts
+    [:h1 (:title post)]
+    [:div (:content post)]))

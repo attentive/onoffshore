@@ -1,16 +1,11 @@
 (ns blog.assortment
-  (:require [hiccup.page :refer [html5 include-css]]))
+  (:require [blog.layout :refer [with-navbar]]
+            [hiccup.page :refer [html5 include-css]]))
 
-(defn render [{global-meta :meta posts :entries entry :entry}]
-  (html5 {:lang "en" :itemtype "http://schema.org/Blog"}
-    [:head
-      [:title (str (:site-title global-meta) "|" (:keyword entry))]
-      [:meta {:charset "utf-8"}]
-      [:meta {:http-equiv "X-UA-Compatible" :content "IE=edge,chrome=1"}]
-      [:meta {:name "viewport" :content "width=device-width, initial-scale=1.0, user-scalable=no"}]]
-      (include-css "css/tomlynch.css")
-    [:body
-     [:h1 (str "Page " (:page entry))]
-     [:ul.items.columns.small-12
+(defn render [{global-meta :meta posts :entries entry :entry :as opts}]
+  (with-navbar opts
+    [:h1 (str "Page " (:page entry))]
+    [:ul.items.columns.small-12
       (for [post posts]
-        [:li (:title post)])]]))
+        [:li (:title post)])]))
+

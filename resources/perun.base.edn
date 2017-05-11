@@ -1,3 +1,4 @@
 {:base-url "http://tomlynch.io/"
  :site-title "tomlynch.io"
- :description "Work in progress"}
+ :description "Work in progress"
+ :author "Tom Lynch"}
