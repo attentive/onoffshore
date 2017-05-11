@@ -1,14 +1,14 @@
 (ns blog.index
   (:require [hiccup.page :refer [html5 include-css]]
-            [blog.layout :refer [with-navbar]]))
+            [blog.layout :refer [with-navbar card]]))
 
 (defn render [{global-meta :meta posts :entries :as opts}]
   (with-navbar opts
-    [:ul
-     [:li [:a {:href "/about.html"} "About Page"]]
-     [:li [:a {:href "/feed.rss"} "RSS"]]
-     [:li [:a {:href "/atom.xml"} "Atom Feed"]]]
-    [:ul.items.columns.small-12
+    [:div.row
+     (card opts [:a {:href "/about.html"} "About Page"])
+     (card opts [:a {:href "/feed.rss"} "RSS"])
+     (card opts [:a {:href "/atom.xml"} "Atom Feed"])]
+    [:div.row
      (for [post posts]
-       [:li
-        [:a {:href (:permalink post)}(:title post)]])]))
+       (card opts 
+        [:a {:href (:permalink post)}(:title post)]))]))

@@ -1,24 +1,31 @@
 (ns blog.layout
   (:require [hiccup.page :refer [html5 include-css include-js]]))
 
+(defn card [{global-meta :meta :as opts} & contents]
+  [:div.card
+   (into [] `(:img {:style "height: 280px; width: 100%; display: block;",
+                     :alt "100%x280",
+                     :data-src "holder.js/100px280/thumb"}
+              ~@contents))])
+
 (defn bootstrap-deps []
   ["//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
    "//code.jquery.com/jquery-3.1.1.slim.min.js"
    "//cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
-   "//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"])
+   "//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
+   "css/tomlynch.css"])
 
 (defn head [{global-meta :meta posts :entries :as opts} & deps]
   [:head
-    [:meta {:charset "utf-8"}]
-    [:meta {:content "width=device-width, initial-scale=1, shrink-to-fit=no", :name "viewport"}]
-    [:meta {:content (:description global-meta), :name "description"}]
-    [:meta {:content (:author global-meta), :name "author"}]
-    [:link {:href "/favicon.ico", :rel "icon"}]
-    [:title (:site-title global-meta)]
-    (for [dep deps]
-      (cond (re-matches #".*\.css" dep) (include-css dep)
-            (re-matches #".*\.js" dep) (include-js dep)))
-    [:style ".top-spacer { margin-top: 100px; }"]])
+   [:meta {:charset "utf-8"}]
+   [:meta {:content "width=device-width, initial-scale=1, shrink-to-fit=no", :name "viewport"}]
+   [:meta {:content (:description global-meta), :name "description"}]
+   [:meta {:content (:author global-meta), :name "author"}]
+   [:link {:href "/favicon.ico", :rel "icon"}]
+   [:title (:site-title global-meta)]
+   (for [dep deps]
+     (cond (re-matches #".*\.css" dep) (include-css dep)
+           (re-matches #".*\.js" dep) (include-js dep)))])
 
 (defn navbar [{global-meta :meta posts :entries :as opts}]
   [:nav.navbar.navbar-toggleable-md.navbar-inverse.bg-inverse.fixed-top
@@ -58,7 +65,7 @@
 
 (defn with-navbar [{global-meta :meta posts :entries :as opts} & contents]
   (html5 {:lang "en" :itemtype "http://schema.org/Blog"}
-        (apply head (cons opts (bootstrap-deps)))    
+         (apply head (cons opts (bootstrap-deps)))    
          [:body
           (navbar opts)
           (into [] `(:div.container.top-spacer ~@contents))]))

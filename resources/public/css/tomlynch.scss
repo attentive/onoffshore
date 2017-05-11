@@ -1,2 +1,16 @@
-@import 'bootstrap/scss/bootstrap'
-
+.top-spacer { 
+	margin-top: 100px; 
+}
+.card {
+	float: left;
+	width: 33.333%;
+	padding: .75rem;
+	margin-bottom: 2rem;
+	border: 0;
+}
+.card > img {
+	margin-bottom: .75rem;
+}
+.card-text {
+	font-size: 85%;
+}
