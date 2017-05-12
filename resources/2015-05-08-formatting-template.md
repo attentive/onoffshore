@@ -1,5 +1,5 @@
 ---
-title: Fulvaque viderat in eburnae femina
+title: Formatting template
 description: Lorem markdownum et tum tanto nuribusque damnavit, pulsat pinna. Exclamant
 author: Tom Lynch
 author-email: tflynch@gmail.com
@@ -8,17 +8,18 @@ author-github: attentive
 author-twitter: attentive
 author-avatar: /images/anton-avatar.png
 location: Fremantle, Western Australia
-date-created: 2014-05-11
-date-modified: 2014-05-11
-date-published: 2014-05-11
+date-created: 2015-05-08
+date-modified: 2015-05-08
+date-published: 2015-05-08
 headline:
 in-language: en
-keywords: eadem oculos veni, mixto manus, virgo
-canonical-url: http://tomlynch.io/fulvaque-viderat
+keywords: typesetting, layout
+canonical-url: http://tomlynch.io/formatting-template.html
 uuid: 3c8029ad-db26-4036-8423-7f7ad4078d8c
 tags:
- - Lorem
- - dolor
+  - layout
+  - design
+  - typesetting
 ---
 
 Below is just about everything you'll need to style in the theme. Check the source code to see the many embedded elements within paragraphs.

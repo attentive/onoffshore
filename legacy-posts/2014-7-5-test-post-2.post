@@ -1,0 +1,39 @@
+{:template "index.html"
+ :title "Test Post 2"
+ :published #inst "2014-07-05"
+ :categories ["another-test"]
+ :tags ["test-tag-1" "test-tag-3"]}
+==========
+# Abracadabra 
+
+## Zippity doo
+
+### I have another header for you
+
++ You can
++ Live in
++ Post-iness, oh you! 
++ Avra
++ Kedavra
++ Loompity-do!
+
+<div silkscreen="pygmentize clojure">
+(ns qux
+ (:require [clojure.string :as smeg]))
+
+(defn foobar [x y]
+ (smeg/join "..." ["yo"
+  (str (+ x y))]))
+
+(foobar "ho" "ho")</div>
+
+When $a \ne 0$, there are two solutions to $\(ax^2 + bx + c = 0\)$ and they are
+$$x = {-b \pm \sqrt{b^2-4ac} \over 2a}.$$
+
+<div align="center" silkscreen="rhizomize">
+{:a [:b :c :d]
+ :b [:a]
+ :c [:a]
+ :d [:a]}
+</div>
+

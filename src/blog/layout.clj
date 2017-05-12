@@ -13,7 +13,7 @@
    "//code.jquery.com/jquery-3.1.1.slim.min.js"
    "//cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
    "//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
-   "css/tomlynch.css"])
+   "/css/tomlynch.css"])
 
 (defn head [{global-meta :meta posts :entries :as opts} & deps]
   [:head

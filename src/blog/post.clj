@@ -5,4 +5,4 @@
 (defn render [{global-meta :meta posts :entries post :entry :as opts}]
   (with-navbar opts
     [:h1 (:title post)]
-    [:div (:content post)]))
+    [:div.blog-post (:content post)]))

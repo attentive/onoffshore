@@ -14,3 +14,42 @@
 .card-text {
 	font-size: 85%;
 }
+
+/*.blog-post {
+	border-top-color: #e7e7e7;
+	border-top-style: solid;
+	border-top-width: 1px;
+	margin-bottom: 20px;
+	padding-bottom: 20px;
+}*/
+
+.blog-post img {
+	width: 100%;
+	margin-top: 20px;
+	margin-bottom: 5px;
+}
+
+.blog-post p.caption {
+	font-size: 100%; 
+	font-style: italic; 
+	text-align: center;
+	margin-bottom: 20px; 
+}
+
+.blog-post p.video-wrapper {
+	height: 335px;
+	width: 560px;
+	max-width: 100%;
+	margin-bottom: 5px; 
+}
+
+.blog-post iframe.video {
+	height: 315px;
+	width: 560px;
+	position: absolute;
+	margin: auto;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	left: 50%;
+	transform: translate(-50%, 0);
+}
