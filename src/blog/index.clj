@@ -4,7 +4,7 @@
 
 (defn render [{global-meta :meta posts :entries :as opts}]
   (with-navbar opts
-    [:div.row
+    #_[:div.row
      (card opts [:a {:href "/about.html"} "About Page"])
      (card opts [:a {:href "/feed.rss"} "RSS"])
      (card opts [:a {:href "/atom.xml"} "Atom Feed"])]

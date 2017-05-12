@@ -48,7 +48,7 @@
                                                     (update-in [path :entries] conj entry)
                                                     (assoc-in [path :entry :keyword] kw))))
                                             {}))))
-        (static :renderer 'blog.about/render :page "about.html")
+        #_(static :renderer 'blog.about/render :page "about.html")
         (inject-scripts :scripts #{"start.js"})
         (sitemap)
         (sass)

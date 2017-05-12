@@ -37,26 +37,26 @@
      :data-toggle "collapse",
      :type "button"}
     [:span.navbar-toggler-icon]]
-   [:a.navbar-brand {:href "#"} (:site-title global-meta)]
+   [:a.navbar-brand {:href "/"} (:site-title global-meta)]
    [:div#the-navbar.collapse.navbar-collapse
     [:ul.navbar-nav.mr-auto
      [:li.nav-item.active
-      [:a.nav-link {:href "#"} "Home " [:span.sr-only "(current)"]]]
-     [:li.nav-item [:a.nav-link {:href "#"} "Link"]]
-     [:li.nav-item [:a.nav-link.disabled {:href "#"} "Disabled"]]
-     [:li.nav-item.dropdown
+      [:a.nav-link {:href "about.html"} "About" [:span.sr-only "(current)"]]]
+     #_[:li.nav-item [:a.nav-link {:href "#"} "Link"]]
+     #_[:li.nav-item [:a.nav-link.disabled {:href "#"} "Disabled"]]
+     #_[:li.nav-item.dropdown
       [:a#dropdown01.nav-link.dropdown-toggle
        {:aria-expanded "false",
         :aria-haspopup "true",
         :data-toggle "dropdown",
         :href "http://example.com"}
        "Dropdown"]
-      [:div.dropdown-menu
+      #_[:div.dropdown-menu
        {:aria-labelledby "dropdown01"}
        [:a.dropdown-item {:href "#"} "Action"]
        [:a.dropdown-item {:href "#"} "Another action"]
        [:a.dropdown-item {:href "#"} "Something else here"]]]]
-    [:form.form-inline.my-2.my-lg-0
+    #_[:form.form-inline.my-2.my-lg-0
      [:input.form-control.mr-sm-2
       {:placeholder "Search", :type "text"}]
      [:button.btn.btn-outline-success.my-2.my-sm-0
