@@ -7,7 +7,7 @@
 		 
 		  ; Sass
 		  [deraen/boot-sass "0.3.1" :scope "test"]
-		  [org.webjars.bower/bootstrap "4.0.0-alpha" :exclusions [org.webjars.bower/jquery]]])
+		  [org.webjars.bower/bootstrap "4.0.0-alpha.6" :exclusions [org.webjars.bower/jquery]]])
 
 (require '[clojure.string :as str]
          '[io.perun :refer :all]
@@ -48,7 +48,7 @@
                                                     (update-in [path :entries] conj entry)
                                                     (assoc-in [path :entry :keyword] kw))))
                                             {}))))
-        #_(static :renderer 'blog.about/render :page "about.html")
+        (static :renderer 'blog.about/render :page "about.html")
         (inject-scripts :scripts #{"start.js"})
         (sitemap)
         (sass)
