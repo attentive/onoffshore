@@ -1,4 +1,4 @@
-(ns blog.layout
+(ns onoffshore.layout
   (:require [hiccup.page :refer [html5 include-css include-js]]))
 
 (defn card [{global-meta :meta :as opts} & contents]
@@ -9,7 +9,7 @@
                    ~@contents))])
 
 (defn bootstrap-deps []
-  [[:css "/css/tomlynch.css"]
+  [[:css "/css/onoffshore.css"]
    [:js "//code.jquery.com/jquery-3.1.1.slim.min.js"]
    [:js "//cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"]
    [:js "//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"]])
@@ -26,7 +26,7 @@
 ;    [:nav.navbar.navbar-default.nav-stacked
 ;     [:div.navbar-header
 ;      "<!--<button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\".navbar-collapse\">\n\t    <span class=\"sr-only\">Toggle navigation</span>\n\t    <span class=\"glyphicon glyphicon-list\"></span>\n\t\t\t</button>-->"
-;      [:h2 [:a {:href "/"} "tomlynch.io"]]]
+;      [:h2 [:a {:href "/"} "onoffshore.io"]]]
 ;     "<!--<div class=\"collapse navbar-collapse\">\n\t  <ul class=\"nav navbar-nav\">\n\t    <li><h3><a href=\"/about\">about</a></h3></li>\n\t    <li><h3><a href=\"/\">archive</a></h3></li>\n\t    <li><h3><a href=\"/\">categories</a></h3></li>\n\t    <li><h3><a href=\"/\">tags</a></h3></li>\n\t  </ul>\n\t\t</div>-->"]
 ;    [:div.hidden-xs.hidden-sm
 ;     [:script
@@ -112,7 +112,7 @@
     [:nav.col-sm-3.hidden-xs-down.bg-faded.sidebar
      [:ul.nav.nav-pills.flex-column
       #_[:li.nav-item
-         [:a.nav-link.active {:href "/"} "tomlynch.io"
+         [:a.nav-link.active {:href "/"} "onoffshore.io"
           [:span.sr-only "(current)"]]]
       [:li.nav-item [:a.nav-link {:href "about.html"} "about"]]
       [:li.nav-item [:span.nav-link "bookmarks"]]]

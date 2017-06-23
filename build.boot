@@ -11,8 +11,8 @@
 
 (require '[clojure.string :as str]
          '[io.perun :refer :all]
-         '[blog.index :as index-view]
-         '[blog.post :as post-view]
+         '[onoffshore.index :as index-view]
+         '[onoffshore.post :as post-view]
          '[pandeiro.boot-http :refer [serve]]
 	 '[deraen.boot-sass :refer [sass]])
 
@@ -20,7 +20,7 @@
   sass {:source-map true})
 
 (deftask build
-  "Build test blog. This task is just for testing different plugins together."
+  "Build static detention infrastructure site."
   []
   (comp
         (global-metadata)
@@ -31,11 +31,11 @@
         (word-count)
         (build-date)
         (gravatar :source-key :author-email :target-key :author-gravatar)
-        (render :renderer 'blog.post/render)
-        (collection :renderer 'blog.index/render :page "index.html")
-        (tags :renderer 'blog.tags/render)
-        (paginate :renderer 'blog.paginate/render)
-        (assortment :renderer 'blog.assortment/render
+        (render :renderer 'onoffshore.post/render)
+        (collection :renderer 'onoffshore.index/render :page "index.html")
+        (tags :renderer 'onoffshore.tags/render)
+        (paginate :renderer 'onoffshore.paginate/render)
+        (assortment :renderer 'onoffshore.assortment/render
                     :grouper (fn [entries]
                                (->> entries
                                     (mapcat (fn [entry]
@@ -48,11 +48,11 @@
                                                     (update-in [path :entries] conj entry)
                                                     (assoc-in [path :entry :keyword] kw))))
                                             {}))))
-        (static :renderer 'blog.about/render :page "about.html")
+        (static :renderer 'onoffshore.about/render :page "about.html")
         (inject-scripts :scripts #{"start.js"})
         (sitemap)
         (sass)
-        (rss :description "Hashobject blog")
+        (rss :description "Global detention infrastructure")
         (atom-feed :filterer :original)
         (target)
         (notify)))
@@ -61,4 +61,4 @@
   []
   (comp (watch)
         (build)
-        (serve :resource-root "public")))
+        (serve :resource-root "public" :port 3001)))

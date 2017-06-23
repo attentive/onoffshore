@@ -1,5 +1,5 @@
-(ns blog.assortment
-  (:require [blog.layout :refer [with-navbar]]
+(ns onoffshore.assortment
+  (:require [onoffshore.layout :refer [with-navbar]]
             [hiccup.page :refer [html5 include-css]]))
 
 (defn render [{global-meta :meta posts :entries entry :entry :as opts}]

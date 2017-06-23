@@ -1,8 +1,0 @@
-{:post-id "2014-7-29-test-post-with-new-editor",
- :published #inst "2014-07-29T14:20:19.377-00:00",
- :title "Test post with new editor",
- :template "index.html"}
-==========
-<div silkscreen="pygmentize clojure">
-(defn make-adder [n]
-  (fn [x] (+ x n)))</div>

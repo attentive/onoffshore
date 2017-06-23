@@ -1,6 +1,6 @@
-(ns blog.post
+(ns onoffshore.post
   (:require [hiccup.page :refer [html5 include-css]]
-            [blog.layout :refer [with-navbar]]))
+            [onoffshore.layout :refer [with-navbar]]))
 
 (defn render [{global-meta :meta posts :entries post :entry :as opts}]
   (with-navbar opts
