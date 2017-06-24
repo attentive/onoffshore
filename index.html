@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.css" rel="stylesheet" type="text/css">
+		<link href="https://unpkg.com/leaflet.markercluster@1.0.6/dist/MarkerCluster.css" rel="stylesheet" />
+		<link href="https://unpkg.com/leaflet.markercluster@1.0.6/dist/MarkerCluster.Default.css" rel="stylesheet" />
+		<link href="https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css" rel="stylesheet" />
+		<style type="text/css">
+body {
+	padding: 0;
+	margin: 0;
+}
+							html, body, #app {
+								height: 100%;
+								width: 100%;
+							}
+
+							.leaflet-popup-tip-container, .leaflet-popup-close-button {
+								display: none !important; 
+							}
+
+							.leaflet-popup-content {
+								font-weight: bold; 
+							}
+		</style>
+	</head>
+	<body>
+		<div id="app"></div>
+		<script src="data.js" charset="utf-8"></script>
+		<script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"
+					integrity="sha512-A7vV8IFfih/D732iSSKi20u/ooOfj/AGehOKq0f4vLT1Zr2Y+RX7C+w8A1gaSasGtRUZpF/NZgzSAu4/Gc41Lg=="
+		 crossorigin=""></script>
+		<script src="https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js"></script>
+		<script src="https://unpkg.com/leaflet.markercluster@1.0.6/dist/leaflet.markercluster.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
+		<script>
+var map = L.map('app', { fullscreenControl: true, noWrap: true }).setView([0, 0], 2);
+L.tileLayer(
+		"http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png", {
+			attribution: '&copy; <a href=\"http://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors, &copy; <a href=\"https://carto.com/attributions\">CARTO</a>',
+			maxZoom: 18,
+		}).addTo(map);
+
+var markers = L.markerClusterGroup();
+_.each(data, function (datum) {
+	markers.addLayer(L.marker(new L.LatLng(datum.lat, datum.lng)));
+});
+
+map.addLayer(markers);
+
+var rate = 10000; 
+
+function flyToAll() {
+	map.flyTo([0,0], 2);
+}
+
+function flyToDatum(datum) {
+	map.flyTo([datum.lat, datum.lng], 14);
+	var popup = L.popup()
+		.setLatLng([datum.lat + 0.005, datum.lng])
+		.setContent(datum.n)
+		.openOn(map);
+	return popup; 
+}
+
+function animate() {
+	flyToAll(); 
+	setTimeout(function() {
+		var datum = _.sample(data); 
+		var popup = flyToDatum(datum);
+		setTimeout(function () {
+			popup.remove(); 
+			animate(); 
+		}, 2 * rate); 
+	}, rate);
+}
+
+animate(); 
+
+		</script>
+		<!--<script src="js/compiled/onoffshore.js" type="text/javascript"></script>-->
+	</body>
+</html>
