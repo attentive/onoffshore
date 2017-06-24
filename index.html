@@ -21,8 +21,15 @@ body {
 								display: none !important; 
 							}
 
-							.leaflet-popup-content {
-								font-weight: bold; 
+							.leaflet-popup-content .datum-name {
+								font-weight: bold;
+							  font-size: 1.5em;
+								text-transform: uppercase; 
+							}
+
+							.leaflet-popup-content .datum-status {
+								color: darkgrey;
+								font-size: 1.5em;
 							}
 		</style>
 	</head>
@@ -36,6 +43,9 @@ body {
 		<script src="https://unpkg.com/leaflet.markercluster@1.0.6/dist/leaflet.markercluster.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
 		<script>
+// Only active detention infrastructure
+data = _.filter(data, function (datum) { return datum.st.startsWith("In u"); });
+
 var map = L.map('app', { fullscreenControl: true, noWrap: true }).setView([0, 0], 2);
 L.tileLayer(
 		"http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png", {
@@ -57,10 +67,11 @@ function flyToAll() {
 }
 
 function flyToDatum(datum) {
-	map.flyTo([datum.lat, datum.lng], 14);
+	//console.log(JSON.stringify(datum));
+	map.flyTo([datum.lat, datum.lng], 13);
 	var popup = L.popup()
-		.setLatLng([datum.lat + 0.005, datum.lng])
-		.setContent(datum.n)
+		.setLatLng([datum.lat + 0.01, datum.lng])
+		.setContent('<p class="datum-name">' + datum.n + '</p><p class="datum-status">' + datum.st + '</p>')
 		.openOn(map);
 	return popup; 
 }
